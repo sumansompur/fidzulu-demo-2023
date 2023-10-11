@@ -1,0 +1,30 @@
+[
+    {
+        "FoodId": 401,
+        "FoodName": "Spaghetti",
+        "Category": "Pasta",
+        "ShelfLife": 3,
+        "VegNonVeg": 1
+    },
+    {
+        "FoodId": 402,
+        "FoodName": "Lays",
+        "Category": "Chips",
+        "ShelfLife": 6,
+        "VegNonVeg": 1
+    },
+    {
+        "FoodId": 403,
+        "FoodName": "Jam",
+        "Category": "Spreads",
+        "ShelfLife": 6,
+        "VegNonVeg": 1
+    },
+    {
+        "FoodId": 404,
+        "FoodName": "Frozen Meat",
+        "Category": "Meat",
+        "ShelfLife": 1,
+        "VegNonVeg": 0
+    }
+]
