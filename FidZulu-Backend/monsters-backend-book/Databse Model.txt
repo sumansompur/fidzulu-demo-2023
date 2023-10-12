@@ -1,0 +1,47 @@
+Database Model with constraints:
+
+Product:
+ProductId(long), ProductType(String), Price(double), Rating(double), ImageURL(String)
+
+Product Table constraints:
+Price should be positive
+Rating should be between 0-5
+
+
+Bike:
+BikeId(long), Manufacturer(String), ModelName(String), EngineCC(number), Colour(String)
+
+Bike Table constraints:
+EngineCC should be positive
+
+
+Books:
+BookId(long), BookName(String), Author(String), Genre(String), Publisher(String), ISBN(String)
+
+ 
+DVDs:
+DVDId(long), DVDName(String), Category(String), Storage(number)
+
+DVD table constraints:
+Storage should be positive
+
+ 
+Food:
+FoodId(long), FoodName(String), Category(String), ShelfLife(number), VegNonVeg(Boolean)
+
+Food Table constraints:
+Shelf Life should be in months and should be positive
+
+ 
+Laptops:
+LaptopId(long), BrandName(String), ModelName(String), CPU(String), GPU(String), RAM(number), VRAM(String), Storage(long), Screen Size (double), Colour(String)
+
+Laptop Table constraints:
+RAM should be positive
+VRAM should be positive
+Storage should be positive
+Screen Size should be in inches and should be positive
+
+
+Toys:
+ToyId(long), ToyName(String), BrandName(String), Category(String), AppropriateAge(String)
