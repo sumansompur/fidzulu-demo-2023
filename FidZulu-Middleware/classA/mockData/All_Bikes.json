@@ -1,0 +1,24 @@
+{
+  "data":{
+    "success": true,
+    "message": "List of Bikes",
+    "body": [
+      {
+        "bikeId": 101,
+        "manufacturer": "Honda",
+        "modelName": "CBR 1000RR",
+        "engineDisplacement": 300,
+        "color": "Red",
+        "price": 589.99
+      },
+      {
+        "bikeId": 102,
+        "manufacturer": "Kawasaki",
+        "modelName": "Ninja ZX-6R",
+        "engineDisplacement": 350,
+        "color": "Green",
+        "price": 825.99
+      }
+    ]
+  }
+}

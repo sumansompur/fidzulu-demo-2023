@@ -1,6 +1,4 @@
-
-
-const foodController = require("../src/controllers/food");
+const dvdController = require("../src/controllers/dvd");
 const request = require("supertest");
 const express = require("express");
 const axios = require("axios");
@@ -10,66 +8,75 @@ const app = express();
 
 jest.mock("axios");
 const axiosMock = require("axios");
-app.use("/", foodController);
+app.use("/", dvdController);
 
 const mockTeamSuccessfulResponse = {
-    "data": {
+    "data":{
         "success": true,
-        "message": "List of Books",
+        "message": "List of Dvds",
         "body": [
-            {
-                "name": "Akhil P",
-                "department": "Backend",
-                "imageLink": "https://example.com/images/johndoe.jpg",
-                "teamName": "Backend Monsters",
-                "quote": "Life is like a bicycle, to keep your balance you must keep moving.",
-                "corpid": "ak1234"
-            },
-            {
-                "name": "Ayushi",
-                "department": "Backend",
-                "imageLink": "https://example.com/images/janesmith.jpg",
-                "teamName": "Backend Monsters",
-                "quote": "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
-                "corpid": "ay5678"
-            },
-            {
-                "name": "Sucheth Hegde",
-                "department": "Backend",
-                "imageLink": "https://example.com/images/michaeljohnson.jpg",
-                "teamName": "Backend Monsters",
-                "quote": "The only way to do great work is to love what you do.",
-                "corpid": "sh7890"
-            }
+        {
+        "name": "Akhil P",
+        "department": "Backend",
+        "imageLink": "https://ibb.co/Y74xgf8",
+        "teamName": "Backend Monsters",
+        "quote": "Life is like a bicycle, to keep your balance you must keep moving.",
+        "corpid": "a721802"
+        },
+        {
+        "name": "Ayushi",
+        "department": "Backend",
+        "imageLink": "https://i.ibb.co/cNrRK7m/IMG-20230726-212509.jpg",
+        "teamName": "Backend Monsters",
+        "quote": "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
+        "corpid": "a721444"
+        },
+        {
+        "name": "Sucheth Hegde",
+        "department": "Backend",
+        "imageLink": "https://i.ibb.co/DkJZwMN/IMG-20230309-WA0011-3.jpg",
+        "teamName": "Backend Monsters",
+        "quote": "The only way to do great work is to love what you do.",
+        "corpid": "a746128"
+        },
+      
         ]
-    }
+        }
 }
 
-const mockAllFoodSuccessfulResponse = {
+const mockAllDVDsSuccessfulResponse = {
     "data":{
       "success": true,
-      "message": "List of Food",
-      "body": [
+      "message": "List of Bikes",
+      "body":[
         {
-            "FoodId": 401,
-            "FoodName": "Spaghetti",
-            "Category": "Pasta",
-            "ShelfLife": 3,
-            "VegOrNon": 1,
-            "Price": 58.99,
-            "Ratings": 4.5,
-            "ImageUrl": "https://shorturl.at/dwW56"
-            },
-            {
-            "FoodId": 402,
-            "FoodName": "Lays",
-            "Category": "Chips",
-            "ShelfLife": 6,
-            "VegOrNon": 1,
-            "Price": 35.39,
-            "Ratings": 3.8,
-            "ImageUrl": "https://shorturl.at/oxBKZ"
-            }
+          "title": "Avengers - Infinity War",
+          "mpaa_rating": "PG-13",
+          "studio": "MARVEL",
+          "time": 149,
+          "price": 18.55
+        },
+        {
+          "title": "Spider-Man Homecoming",
+          "mpaa_rating": "14 and over",
+          "studio": "Sony Pictures Home Entertainment",
+          "time": 133,
+          "price": 7.23
+        },
+        {
+          "title": "Ant-Man",
+          "mpaa_rating": "PG-13",
+          "studio": "Walt Disney Video",
+          "time": 117,
+          "price": 19.98
+        },
+        {
+          "title": "Captain America",
+          "mpaa_rating": "PG",
+          "studio": "Walt Disney Video",
+          "time": 123,
+          "price": 24.88
+        }
       ]
     }
 }
@@ -82,7 +89,7 @@ const mockFailResponse = {
     }
 }
 
-describe("Check GET all food URL", () => {
+describe("Check GET all DVDs URL", () => {
     test("when axios call errors out", async () => {
         axiosMock.get.mockRejectedValue(new Error("Some Error"));
         const response = await request(app).get("/all/IN");
@@ -113,10 +120,10 @@ describe("Check GET all food URL", () => {
     });
 
     test("when backend gives success response", async () => {
-        axios.get.mockResolvedValue(mockAllFoodSuccessfulResponse);
+        axios.get.mockResolvedValue(mockAllDVDsSuccessfulResponse);
         const response = await request(app).get("/all/IN");
         expect(response.status).toBe(Constants.HTTP_STATUS_CODE.OK);
-        expect(response.body).toStrictEqual(mockAllFoodSuccessfulResponse.data.body);
+        expect(response.body).toStrictEqual(mockAllDVDsSuccessfulResponse.data.body);
     });
 
 });
@@ -146,10 +153,8 @@ describe("Check GET 'team' URL", () => {
         axios.get.mockResolvedValue(mockTeamSuccessfulResponse);
         const response = await request(app).get("/teams");
         expect(response.status).toBe(Constants.HTTP_STATUS_CODE.OK);
-        expect(response.body).toStrictEqual(mockTeamSuccessfulResponse.data.body);
+       expect(response.body).toStrictEqual(mockTeamSuccessfulResponse.data.body);
     });
 
 });
-
-
 

@@ -26,14 +26,27 @@ router.get(Constants.APPLICATION_ROUTES.LAPTOP_ROUTES.ALL_LAPTOPS, async(req, re
         console.log(backendUrl);
         
         backendResp = await axios.get(backendUrl);
-        resp.status(200).json(backendResp.data);
-    } catch(e){
+        if(backendResp.data.success){
+            
+            resp.status(200).json(backendResp.data.body);
+        }
+        else{
+            resp.status(Constants.HTTP_STATUS_CODE.INTERNAL_SERVER_ERROR).json({
+                error: ErrorMessages.ERROR.INTERNAL_SERVER_ERROR,
+                detail: backendResp.data.message
+            }); 
+       
+    } 
+}
+    
+    catch(e){
         logger.error("Could not connect to backend for getting laptop details. ERROR:\n"+e);
         resp.status(500).json({
             error: ErrorMessages.ERROR.INTERNAL_SERVER_ERROR,
             detail: ErrorMessages.DETAIL.BACKEND_CONNECTION_FAILURE
         });
     }
+
 });
 
 router.get(Constants.APPLICATION_ROUTES.LAPTOP_ROUTES.LAPTOPS_TEAM, async(req, resp) =>{
@@ -41,9 +54,19 @@ router.get(Constants.APPLICATION_ROUTES.LAPTOP_ROUTES.LAPTOPS_TEAM, async(req, r
     let backendResp;
     try{
         //TODO: Get axios URL from env
-        backendResp = await axios.get(Constants.ENV.HOST_LAPTOPS);
-        resp.status(200).json(backendResp.data);
-    } catch(e){
+        backendResp = await axios.get(Constants.ENV.HOST_LAPTOPS+"/teams");
+        if(backendResp.data.success){
+            
+            resp.status(200).json(backendResp.data.body);
+        }
+        else{
+            resp.status(Constants.HTTP_STATUS_CODE.INTERNAL_SERVER_ERROR).json({
+                error: ErrorMessages.ERROR.INTERNAL_SERVER_ERROR,
+                detail: backendResp.data.message
+            }); 
+       
+        
+    } }catch(e){
         logger.error("Could not connect to backend for getting bike team details\n. ERROR:", e);
         resp.status(500).json({
             error: ErrorMessages.ERROR.INTERNAL_SERVER_ERROR,

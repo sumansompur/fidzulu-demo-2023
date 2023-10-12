@@ -1,16 +1,14 @@
-
-
-const foodController = require("../src/controllers/food");
+const booksController = require("../src/controllers/books");
 const request = require("supertest");
 const express = require("express");
 const axios = require("axios");
 const Constants = require("../src/Constants/constants");
 const ErrorMessages = require("../src/Constants/errorMessages");
-const app = express();
+const app = express()
 
 jest.mock("axios");
 const axiosMock = require("axios");
-app.use("/", foodController);
+app.use("/", booksController);
 
 const mockTeamSuccessfulResponse = {
     "data": {
@@ -20,56 +18,49 @@ const mockTeamSuccessfulResponse = {
             {
                 "name": "Akhil P",
                 "department": "Backend",
-                "imageLink": "https://example.com/images/johndoe.jpg",
+                "imageLink": "https://ibb.co/Y74xgf8",
                 "teamName": "Backend Monsters",
                 "quote": "Life is like a bicycle, to keep your balance you must keep moving.",
-                "corpid": "ak1234"
-            },
-            {
+                "corpid": "a721802"
+                },
+                {
                 "name": "Ayushi",
                 "department": "Backend",
-                "imageLink": "https://example.com/images/janesmith.jpg",
+                "imageLink": "https://i.ibb.co/cNrRK7m/IMG-20230726-212509.jpg",
                 "teamName": "Backend Monsters",
                 "quote": "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
-                "corpid": "ay5678"
-            },
-            {
-                "name": "Sucheth Hegde",
-                "department": "Backend",
-                "imageLink": "https://example.com/images/michaeljohnson.jpg",
-                "teamName": "Backend Monsters",
-                "quote": "The only way to do great work is to love what you do.",
-                "corpid": "sh7890"
-            }
+                "corpid": "a721444"
+                }
         ]
     }
 }
 
-const mockAllFoodSuccessfulResponse = {
+const mockAllBooksSuccessfulResponse = {
     "data":{
       "success": true,
-      "message": "List of Food",
+      "message": "List of Books",
       "body": [
         {
-            "FoodId": 401,
-            "FoodName": "Spaghetti",
-            "Category": "Pasta",
-            "ShelfLife": 3,
-            "VegOrNon": 1,
-            "Price": 58.99,
+            "BookId": 201,
+            "BookName": "A Game of Thrones",
+            "Genre": "Fantasy",
+            "Author": "George R.R. Martin",
+            "Publisher": "Bantam",
+            "Price": 11.79,
             "Ratings": 4.5,
-            "ImageUrl": "https://shorturl.at/dwW56"
+            "ImageUrl": "https://shorturl.at/jyN45"
             },
             {
-            "FoodId": 402,
-            "FoodName": "Lays",
-            "Category": "Chips",
-            "ShelfLife": 6,
-            "VegOrNon": 1,
-            "Price": 35.39,
-            "Ratings": 3.8,
-            "ImageUrl": "https://shorturl.at/oxBKZ"
+            "BookId": 202,
+            "BookName": "To kill a Mockingbird",
+            "Genre": "Fiction",
+            "Author": "Harper Lee",
+            "Publisher": "Harper Perennial",
+            "Price": 15.33,
+            "Ratings": 4.8,
+            "ImageUrl": "https://shorturl.at/iovDL"
             }
+            
       ]
     }
 }
@@ -82,7 +73,7 @@ const mockFailResponse = {
     }
 }
 
-describe("Check GET all food URL", () => {
+describe("Check GET all books URL", () => {
     test("when axios call errors out", async () => {
         axiosMock.get.mockRejectedValue(new Error("Some Error"));
         const response = await request(app).get("/all/IN");
@@ -113,10 +104,10 @@ describe("Check GET all food URL", () => {
     });
 
     test("when backend gives success response", async () => {
-        axios.get.mockResolvedValue(mockAllFoodSuccessfulResponse);
+        axios.get.mockResolvedValue(mockAllBooksSuccessfulResponse);
         const response = await request(app).get("/all/IN");
         expect(response.status).toBe(Constants.HTTP_STATUS_CODE.OK);
-        expect(response.body).toStrictEqual(mockAllFoodSuccessfulResponse.data.body);
+        expect(response.body).toStrictEqual(mockAllBooksSuccessfulResponse.data.body);
     });
 
 });
@@ -150,6 +141,4 @@ describe("Check GET 'team' URL", () => {
     });
 
 });
-
-
 

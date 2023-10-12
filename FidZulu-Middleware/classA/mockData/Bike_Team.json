@@ -1,0 +1,32 @@
+{
+    "data": {
+        "success": true,
+        "message": "List of Books",
+        "body": [
+            {
+                "name": "Akhil P",
+                "department": "Backend",
+                "imageLink": "https://example.com/images/johndoe.jpg",
+                "teamName": "Backend Monsters",
+                "quote": "Life is like a bicycle, to keep your balance you must keep moving.",
+                "corpid": "ak1234"
+            },
+            {
+                "name": "Ayushi",
+                "department": "Backend",
+                "imageLink": "https://example.com/images/janesmith.jpg",
+                "teamName": "Backend Monsters",
+                "quote": "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
+                "corpid": "ay5678"
+            },
+            {
+                "name": "Sucheth Hegde",
+                "department": "Backend",
+                "imageLink": "https://example.com/images/michaeljohnson.jpg",
+                "teamName": "Backend Monsters",
+                "quote": "The only way to do great work is to love what you do.",
+                "corpid": "sh7890"
+            }
+        ]
+    }
+}
