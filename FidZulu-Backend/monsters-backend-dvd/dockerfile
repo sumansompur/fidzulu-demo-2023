@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18
 
 # Set the working directory in the container
 WORKDIR /app
@@ -13,14 +13,13 @@ RUN npm install
 COPY . .
 
 # Define environment variables for the three URLs
-ENV DVD_PORT=3035
-ENV FOOD_PORT=3032
+ENV DVD_PORT=3033
 ENV USER="scott"
-ENV PASSWORD="TIGER"
-
+ENV PASSWORD="Tiger123"
+ENV CONNECTION_STRING=http://oracle-db:1521/xe
 
 # Expose the port your Express.js application will run on (change as needed)
-EXPOSE 3035
+EXPOSE 3033
 
 # Start your Express.js application
 CMD ["node", "index.js"]

@@ -13,13 +13,13 @@ RUN npm install
 COPY . .
 
 # Define environment variables for the three URLs
-ENV LAPTOP_PORT=3035
+ENV BIKE_PORT=3031
 ENV USER="scott"
 ENV PASSWORD="Tiger123"
 ENV CONNECTION_STRING=http://oracle-db:1521/xe
 
 # Expose the port your Express.js application will run on (change as needed)
-EXPOSE 3035
+EXPOSE 3031
 
 # Start your Express.js application
 CMD ["node", "index.js"]
