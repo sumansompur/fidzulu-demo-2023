@@ -14,9 +14,9 @@ COPY . .
 
 # Define environment variables for the three URLs
 ENV PORT=3022
-ENV HOST_BOOKS=http://127.0.0.1:3032/books
-ENV HOST_DVD=http://127.0.0.1:3035/dvds
-ENV HOST_LAPTOPS=http://127.0.0.1:3036/laptops
+ENV HOST_BOOKS=http://bookService:3032/books
+ENV HOST_DVD=http://dvdService:3035/dvds
+ENV HOST_LAPTOPS=http://laptopService:3036/laptops
 
 # Expose the port your Express.js application will run on (change as needed)
 EXPOSE 3022
